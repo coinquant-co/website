@@ -1,0 +1,332 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <h1>Coinquant</h1>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+
+  <!-- <div class="asd" style="display: inline-block;width: 49.8%; height: 50%;; background-color: lightblue;">
+  
+  </div>
+  <div class='qwe' style="display: inline-block;width: 49.8%; height: 50%;; background-color: lightgray;"> 
+  <iframe style="border-width: 0;" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_7ce06&symbol=BINANCE%3ABNBUSDTPERP&interval=240&hidesidetoolbar=0&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=%5B%5D&theme=light&style=1&timezone=America%2FBogota&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=en&utm_source=&utm_medium=widget&utm_campaign=chart&utm_term=BINANCE%3ABNBUSDTPERP"></iframe>
+  </div>
+  <div style="display: inline-block;width: 49.8%; height: 50%;; background-color: lightgreen;"> </div>
+  <div style="display: inline-block;width: 49.8%; height: 50%;; background-color: lightgoldenrodyellow;"> </div>
+  <div style="display: inline-block;width: 49.8%; height: 50%;; background-color: lightpink;"> </div>
+  <div style="display: inline-block;width: 49.8%; height: 50%;; background-color: lightsalmon;"> </div>
+  <div style="display: inline-block;width: 49.8%; height: 50%;; background-color: lightseagreen;"> </div>
+  <div style="display: inline-block;width: 49.8%; height: 50%;; background-color: lightsteelblue;"> </div> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/ejs@3.1.5/ejs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"
+    integrity="sha512-rMGGF4wg1R73ehtnxXBt5mbUfN9JUJwbk21KMlnLZDJh7BkPmeovBuddZCENJddHYYMkCh9hPFnPmS9sspki8g=="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css"
+    integrity="sha512-0nkKORjFgcyxv3HbE4rzFUlENUMNqic/EzDIeYCgsKa/nwqr2B91Vu/tNAu4Q0cBuG4Xe/D1f/freEci/7GDRA=="
+    crossorigin="anonymous" />
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+  <div id="form">
+    <button onclick="localStorage.clear()">Clear Local Storage</button>
+    <span>*To fetch form options from sources again, reload after clicking this button</span>
+    <br>
+    <label for="hideSideToolbar">
+      <input type="checkbox" name="hideSideToolbar" id="hideSideToolbar">
+      Hide side toolbar
+    </label>
+    <br>
+    <label for="">Height</label><input type="text" name="height" id="height">
+    <label for="">Width</label><input type="text" name="width" id="width">
+    <br>
+    <!-- See #1 -->
+    <!-- <input type="text" name="tt" id="tt"> -->
+
+  </div>
+
+  <script>
+    // #1: origin header can't be deleted, other solution is to make request with app server
+    if (false)
+      $.ajaxSetup({
+        xhrFields: {
+          withCredentials: true
+        },
+        headers: {
+          'Access-Control-Allow-Credentials': 'true'
+        }
+      });
+
+    tvSearchUrl = (q = '') => `https://symbol-search.tradingview.com/symbol_search/?text=${q}&exchange=&type=bitcoin%2Ccrypto&hl=true&lang=en&domain=production`
+
+    $('#tt').select2({
+      ajax: {
+        url: (params) => { return tvSearchUrl(params.term) },
+        processResults: (remoteResults) => {
+          results = {}
+          remoteResults.map((e, i) => {
+            exchangeSymbol = `${e.exchange}:${e.symbol}`
+            return { id: exchangeSymbol, text: exchangeSymbol }
+          })
+          return { results }
+        },
+        dataType: 'json'
+        // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+      }
+    });
+
+    // ===================  #1  ===============================
+  </script>
+
+  <script>
+    intervalsT = `<select name="intervals" id="intervals" multiple class="chosen">
+      <% intervals.forEach(function(interval){ %>
+        <option value="<%= interval.value %>"><%= interval.label %></option>
+      <% }); %>
+    </select>
+    `
+    symbolsT = `<select name="symbols" id="symbols" multiple class="chosen">
+      <% symbols.forEach(function(symbol){ %>
+        <option value="<%= symbol%>"><%= symbol %></option>
+      <% }); %>
+    </select>`
+
+    studiesT = `<select name="studies" id="studies" multiple class="chosen">
+      <% studies.forEach(function(study){ %>
+        <option value="<%= study.value %>"><%= study.label %></option>
+      <% }); %>
+    </select>`
+  </script>
+
+  <!-- <div id="tradingview_937d1"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BNBUSDTPERP/?exchange=BINANCE" rel="noopener" target="_blank"><span class="blue-text">BNBUSDTPERP Chart</span></a> by TradingView</div> -->
+  <script>
+    tvTemplate = `
+  <iframe class="tv-template" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_7ce06&symbol=<%= symbol %>&interval=<%= interval %>&hidesidetoolbar=<%= hideSideToolbar %>&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=%5B%5D&theme=light&style=1&timezone=America%2FBogota&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=en&utm_source=&utm_medium=widget&utm_campaign=chart&studies=<%= studies %>&utm_term=BINANCE%3ABNBUSDTPERP&showpopupbutton=1,1&popupwidth=1000&popupheight=650"></iframe>
+  `
+    tvTemplate2 = `
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+    
+    
+    <script type="text/javascript">
+      new TradingView.widget(
+      {
+        "autosize": true,
+        "symbol": "<%= symbol %>",
+        "interval": "<%= interval %>",
+        "timezone": "America/Bogota",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "hide_side_toolbar": false,
+        "allow_symbol_change": true,
+        "show_popup_button": true,
+        "popup_width": "1000",
+        "popup_height": "650",
+      }
+      );
+      <\/script>
+    </div>
+    <!-- TradingView Widget END -->
+    `
+    // container_id: "the_id"
+  </script>
+
+  <button onclick="renderAll()">Render All</button>
+  <div id="renderPad"></div>
+
+
+  <script>
+    // var app = new Vue({
+    //   el: '#app',
+    //   data: {
+    //     message: 'NEOUSDTPERP'
+    //   }
+    // })
+
+
+    // symbols = ['BINANCE:FILUSDT', 'BINANCE:CTKUSDT', 'AVAXUSDTPERP', 'FLMUSDTPERP', 'FTMUSDTPERP', 'HNTUSDTPERP', 'BNBUSDTPERP', 'XMRUSDTPERP', 'OMGUSDTPERP', 'ATOMUSDTPERP', 'BTCUSDTPERP', 'THETAUSDTPERP', 'ZECUSDTPERP', 'MKRUSDTPERP', 'ZILUSDTPERP', 'SNXUSDTPERP', 'ADAUSDTPERP', 'VETUSDTPERP', 'SXPUSDTPERP', 'IOTAUSDTPERP', 'BLZUSDTPERP', 'EGLDUSDTPERP', 'STORJUSDTPERP', 'XRPUSDTPERP', 'ETCUSDTPERP', 'ICXUSDTPERP', 'RUNEUSDTPERP', 'ETHUSDTPERP', 'WAVESUSDTPERP', 'NEOUSDTPERP', 'BCHUSDTPERP', 'BATUSDTPERP', 'LINKUSDTPERP', 'TRXUSDTPERP', 'ZRXUSDTPERP', 'KAVAUSDTPERP', 'TRBUSDTPERP', 'DOTUSDTPERP', 'BALUSDTPERP', 'QTUMUSDTPERP', 'EOSUSDTPERP', 'IOSTUSDTPERP', 'BZRXUSDTPERP', 'SUSHIUSDTPERP', 'DEFIUSDTPERP', 'DOGEUSDTPERP', 'BANDUSDTPERP', 'ALGOUSDTPERP', 'CRVUSDTPERP', 'RLCUSDTPERP', 'XTZUSDTPERP', 'KNCUSDTPERP', 'DASHUSDTPERP', 'LTCUSDTPERP', 'LENDUSDTPERP', 'YFIUSDTPERP', 'XLMUSDTPERP', 'ONTUSDTPERP', 'YFIIUSDTPERP', 'COMPUSDTPERP', 'SRMUSDTPERP', 'SOLUSDTPERP', 'UNIUSDTPERP', 'TOMOUSDT', 'BINANCE:BTCUSDT', 'BINANCE:ETHUSDT']
+    // studies = "IchimokuCloud%40tv-basicstudies%1FRSI%40tv-basicstudies"
+    // studies = "RSI%40tv-basicstudies"
+    // studies = "UltimateOsc%40tv-basicstudies%1FRSI%40tv-basicstudies"
+  
+    
+
+    // tvTemplate = $('template#tv').html()
+    render = (symbol, interval, studies) => {
+      hideSideToolbar = $('#hideSideToolbar').prop('checked') ? 1 : 0
+
+      _studies = studies.map(e => `${e}%40tv-basicstudies`)
+        .join('%1F')
+
+      html = ejs.render(tvTemplate, { symbol, interval, hideSideToolbar, studies: _studies });
+      $('#renderPad').append(html)
+    }
+
+
+    renderAll = () => {
+      ssymbols = $('#symbols').val()
+      sintervals = $('#intervals').val()
+      sstudies = $('#studies').val()
+      // console.log(`rendering ${ssymbols} and ${sintervals}`)
+      $('#renderPad').html('')
+      for (let i = 0; i < ssymbols.length; i++) {
+        const ss = ssymbols[i];
+        for (let j = 0; j < sintervals.length; j++) {
+          const si = sintervals[j];
+          console.log(`rendering ${ss} and ${si}`)
+          setTimeout(() => { render(ss, si, sstudies) }, 500)
+        }
+      }
+
+    }
+
+    renderFormControls = _ => {
+      sRender = ejs.render(intervalsT, { intervals })
+      sRender += ejs.render(symbolsT, { symbols })
+      sRender += ejs.render(studiesT, { studies })
+      $('div#form').append(sRender)
+      $('.chosen').chosen({ width: '50%' })
+
+      // default intervals
+      // defIntervals = ['3', '5', '60', 'D']
+      // defIntervals = ['15', '60', '240', 'D']
+      // defIntervals = ['15', '240']
+      defIntervals = '1,3,5,15'.split(',')
+      defIntervals.forEach(i => {
+        // console.log(`#intervals > option[value=${i}]`)
+        $(`#intervals > option[value=${i}]`).prop('selected', true)
+        $('.chosen').trigger('chosen:updated');
+      });
+
+      // default symbols
+      // defIntervals = ['3', '5', '60', 'D']
+      // USDT def symbols
+      // defSymbols = [ 'ZIL', 'HARD', 'SUSHI', 'AAVE', 'YFI' ]
+      defSymbols = levDownSpotPairs.slice(0,2)
+        // .split(',')
+        // .map(e=>`BINANCE:${e}USDT`.toUpperCase())
+        .map(e=>`BINANCE:${e}`.toUpperCase())
+      // BTC def symbols
+      defSymbols = defSymbols.concat(''
+        .split(',')
+        .map(e=>`BINANCE:${e}BTC`.toUpperCase()))
+      defSymbols.forEach(i => {
+        // console.log(`#intervals > option[value=${i}]`)
+        $(`#symbols > option[value="${i}"]`).prop('selected', true)
+        $('.chosen').trigger('chosen:updated');
+      });
+
+      // Values can be seen on tv-studies.json or tv-studies-value-label.json
+      defStudies = "RSI,UltimateOsc,MF"
+      defStudies = "RSI"
+        .split(',')
+      defStudies.forEach(i => {
+        // console.log(`#intervals > option[value=${i}]`)
+        $(`#studies > option[value="${i}"]`).prop('selected', true)
+        $('.chosen').trigger('chosen:updated');
+      });
+    }
+
+
+    // suppress errrors and warnings
+    console.warn = () => { }
+    console.error = () => { }
+    // to work file should be served via http/s
+    // (ethereum = ethereum || {}); ethereum.autoRefreshOnNetworkChange = false
+
+    // change width and height of charts
+    $('#height,#width').change((e) => {
+      el = e.target
+      $('.tv-template').css(el.name, el.value)
+    })
+
+    
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jsonpath@1.0.2/jsonpath.min.js"></script>
+  <script>
+    (async () => {
+
+      purgePairs = () =>{
+
+      }
+      saveJsonPath = async (url, lsKey, jsonpathArg) =>{
+        if(localStorage[lsKey]){
+          return JSON.parse(localStorage[lsKey])
+        }
+  
+        var settings = {
+          "url": url,
+          "method": "GET",
+          "timeout": 0,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+        };
+        arr1 = []
+        arr1 = await $.ajax(settings)
+  
+        //https://cdn.jsdelivr.net/npm/jsonpath@1.0.2/jsonpath.min.js
+        // var jp = require('jsonpath');
+        // var names = jp.query(cities, '$..name');
+        arr1 = jsonpath.query(arr1, jsonpathArg )
+        localStorage[lsKey] = JSON.stringify(arr1)
+        return arr1
+      }
+
+      savePairs = (url, lsKey) => saveJsonPath(url, lsKey, '$..symbol')
+      saveStudies = _ => saveJsonPath('data/tv-studies-value-label.json', 'studies', '*')
+
+      saveSpotPairs = () => savePairs("https://api.binance.com/api/v3/exchangeInfo", 'spotPairs') 
+      saveFuturePairs = () => savePairs("https://fapi.binance.com/fapi/v1/exchangeInfo", 'futurePairs')
+
+      intervalValues = ["1", "3", "5", "15", "30", "60", "120", "180", "240", "D", "W"]
+      intervalLabels = "1 minute,3 minutes,5 minutes,15 minutes,30 minutes,1 hour,2 hours,3 hours,4 hours,1 day,1 week".split(',')
+      intervals = intervalValues.map((e,i)=>({value: e, label: intervalLabels[i]}))
+
+      // CORS blocked
+      // spotPairs = await saveSpotPairs()
+      spotPairs = (await $.getJSON('data/binanceSpotPairs.json')).pairs
+      usdtSpotPairs = spotPairs.filter(e => e.match(/USDT$/))
+      levSpotPairs = spotPairs.filter(e => e.match(/UPUSDT$/) || e.match(/DOWNUSDT$/))
+      levUpSpotPairs = spotPairs.filter(e => e.match(/UPUSDT$/))
+      levDownSpotPairs = spotPairs.filter(e => e.match(/DOWNUSDT$/))
+      btcSpotPairs = spotPairs.filter(e => e.match(/BTC$/))
+      // Not used
+      // futurePairs = await saveFuturePairs()
+
+      symbols = await $.getJSON('data/forex_xau.json')
+      // symbols = usdtSpotPairs.map( e => `BINANCE:${e}`)
+      //symbols = futurePairs.map( e => `BINANCE:${e}PERP`)
+
+      studies = await saveStudies()
+
+      renderFormControls()
+    })()
+  </script>
+
+  <style>
+    .tv-template {
+      border-width: 0;
+      width: 49.8%;
+      height: 50%;
+    }
+  </style>
+</body>
+
+</html>

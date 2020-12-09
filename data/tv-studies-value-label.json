@@ -1,0 +1,246 @@
+[
+  {
+    "value": "ACCD",
+    "label": "Accumulation​/​Distribution"
+  },
+  {
+    "value": "studyADR",
+    "label": "ADR"
+  },
+  {
+    "value": "AROON",
+    "label": "Aroon"
+  },
+  {
+    "value": "ATR",
+    "label": "Average True Range"
+  },
+  {
+    "value": "AwesomeOscillator",
+    "label": "Awesome Oscillator"
+  },
+  {
+    "value": "BB",
+    "label": "Bollinger Bands"
+  },
+  {
+    "value": "BollingerBandsR",
+    "label": "Bollinger Bands %B"
+  },
+  {
+    "value": "BollingerBandsWidth",
+    "label": "Bollinger Bands Width"
+  },
+  {
+    "value": "CMF",
+    "label": "Chaikin Money Flow"
+  },
+  {
+    "value": "ChaikinOscillator",
+    "label": "Chaikin Oscillator"
+  },
+  {
+    "value": "chandeMO",
+    "label": "Chande Momentum Oscillator"
+  },
+  {
+    "value": "ChoppinessIndex",
+    "label": "Choppiness Index"
+  },
+  {
+    "value": "CCI",
+    "label": "Commodity Channel Index"
+  },
+  {
+    "value": "CRSI",
+    "label": "ConnorsRSI"
+  },
+  {
+    "value": "CorrelationCoefficient",
+    "label": "Correlation Coefficient"
+  },
+  {
+    "value": "DetrendedPriceOscillator",
+    "label": "Detrended Price Oscillator"
+  },
+  {
+    "value": "DM",
+    "label": "Directional Movement"
+  },
+  {
+    "value": "DONCH",
+    "label": "Donchian Channels"
+  },
+  {
+    "value": "DoubleEMA",
+    "label": "Double EMA"
+  },
+  {
+    "value": "EaseOfMovement",
+    "label": "Ease Of Movement"
+  },
+  {
+    "value": "EFI",
+    "label": "Elder's Force Index"
+  },
+  {
+    "value": "ENV",
+    "label": "Envelope"
+  },
+  {
+    "value": "FisherTransform",
+    "label": "Fisher Transform"
+  },
+  {
+    "value": "HV",
+    "label": "Historical Volatility"
+  },
+  {
+    "value": "hullMA",
+    "label": "Hull Moving Average"
+  },
+  {
+    "value": "IchimokuCloud",
+    "label": "Ichimoku Cloud"
+  },
+  {
+    "value": "KLTNR",
+    "label": "Keltner Channels"
+  },
+  {
+    "value": "KST",
+    "label": "Know Sure Thing"
+  },
+  {
+    "value": "LinearRegression",
+    "label": "Linear Regression"
+  },
+  {
+    "value": "MACD",
+    "label": "MACD"
+  },
+  {
+    "value": "MOM",
+    "label": "Momentum"
+  },
+  {
+    "value": "MF",
+    "label": "Money Flow"
+  },
+  {
+    "value": "MoonPhases",
+    "label": "Moon Phases"
+  },
+  {
+    "value": "MASimple",
+    "label": "Moving Average"
+  },
+  {
+    "value": "MAExp",
+    "label": "Moving Average Exponential"
+  },
+  {
+    "value": "MAWeighted",
+    "label": "Moving Average Weighted"
+  },
+  {
+    "value": "OBV",
+    "label": "On Balance Volume"
+  },
+  {
+    "value": "PSAR",
+    "label": "Parabolic SAR"
+  },
+  {
+    "value": "PivotPointsHighLow",
+    "label": "Pivot Points High Low"
+  },
+  {
+    "value": "PivotPointsStandard",
+    "label": "Pivot Points Standard"
+  },
+  {
+    "value": "PriceOsc",
+    "label": "Price Oscillator"
+  },
+  {
+    "value": "PriceVolumeTrend",
+    "label": "Price Volume Trend"
+  },
+  {
+    "value": "ROC",
+    "label": "Rate Of Change"
+  },
+  {
+    "value": "RSI",
+    "label": "Relative Strength Index"
+  },
+  {
+    "value": "VigorIndex",
+    "label": "Relative Vigor Index"
+  },
+  {
+    "value": "VolatilityIndex",
+    "label": "Relative Volatility Index"
+  },
+  {
+    "value": "SMIErgodicIndicator",
+    "label": "SMI Ergodic Indicator"
+  },
+  {
+    "value": "SMIErgodicOscillator",
+    "label": "SMI Ergodic Oscillator"
+  },
+  {
+    "value": "Stochastic",
+    "label": "Stochastic"
+  },
+  {
+    "value": "StochasticRSI",
+    "label": "Stochastic RSI"
+  },
+  {
+    "value": "TripleEMA",
+    "label": "Triple EMA"
+  },
+  {
+    "value": "Trix",
+    "label": "TRIX"
+  },
+  {
+    "value": "UltimateOsc",
+    "label": "Ultimate Oscillator"
+  },
+  {
+    "value": "VSTOP",
+    "label": "Volatility Stop"
+  },
+  {
+    "value": "Volume",
+    "label": "Volume"
+  },
+  {
+    "value": "VWAP",
+    "label": "VWAP"
+  },
+  {
+    "value": "MAVolumeWeighted",
+    "label": "VWMA"
+  },
+  {
+    "value": "WilliamR",
+    "label": "Williams %R"
+  },
+  {
+    "value": "WilliamsAlligator",
+    "label": "Williams Alligator"
+  },
+  {
+    "value": "WilliamsFractal",
+    "label": "Williams Fractal"
+  },
+  {
+    "value": "ZigZag",
+    "label": "Zig Zag"
+  }
+]
